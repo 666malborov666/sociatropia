@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOCIOTROPIA.COM - Сайт Визитка</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito&display=swap" rel="stylesheet"/>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&family=Nunito&display=swap');
+
+    /* Reset and base */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      height: 100%;
+      width: 100%;
+      overflow-x: hidden;
+    }
+    body {
+      font-family: 'Nunito', sans-serif;
+      color: #e0e0e0;
+      /* background with server image and dark overlay */
+      background:
+        linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+      background-size: cover;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    /* Container to center content and constrain max size */
+    .container {
+      background: rgba(0,0,0,0.6);
+      border-radius: 20px;
+      box-shadow: 0 0 40px rgba(0, 255, 153, 0.4);
+      max-width: 900px;
+      max-height: 90vh;
+      width: 100%;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      padding: 30px 40px;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    /* Intro Text container */
+    .intro-text {
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      user-select: none;
+      cursor: default;
+      animation: fadeIn 2.5s ease forwards;
+      position: relative;
+      color: #00ffea;
+      letter-spacing: 0.05em;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      margin-bottom: 40px;
+      flex-shrink: 0;
+    }
+    .intro-text h1 {
+      font-size: 3.0rem;
+      margin-bottom: 8px;
+      line-height: 1.2;
+      text-shadow:
+        0 0 8px #00ffe3,
+        0 0 20px #00ffe3,
+        0 0 30px #00ffe3,
+        0 0 40px #00ffe3;
+      animation: glitch 3s linear infinite;
+      position: relative;
+      display: inline-block;
+    }
+    .intro-text h2 {
+      font-size: 2.0rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #00ffa8;
+      text-shadow:
+        0 0 6px #00ffa8,
+        0 0 15px #00ffa8,
+        0 0 25px #00ffa8;
+      animation: glitch 3s linear infinite;
+      animation-delay: 0.2s;
+      position: relative;
+      display: inline-block;
+    }
+
+    /* Fade in animation */
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glitch effect */
+    @keyframes glitch {
+      0% {
+        text-shadow: 
+          1px 0 #00ffc8,
+          -1px 0 #00ffea;
+        transform: translate(0);
+      }
+      20% {
+        text-shadow: 
+          2px 0 #00ffea,
+          -2px 0 #00ffc8;
+        transform: translate(-1px, 1px);
+      }
+      40% {
+        text-shadow: 
+          1.5px 0 #00ffa8,
+          -1.5px 0 #00ffb2;
+        transform: translate(1px, -1px);
+      }
+      60% {
+        text-shadow:
+          2px 0 #00ffea,
+          -2px 0 #00ffc8;
+        transform: translate(-1px, 1px);
+      }
+      80% {
+        text-shadow:
+          1px 0 #00ffc8,
+          -1px 0 #00ffea;
+        transform: translate(0);
+      }
+      100% {
+        text-shadow:
+          1px 0 #00ffc8,
+          -1px 0 #00ffea;
+        transform: translate(0);
+      }
+    }
+
+    /* Navigation buttons container */
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 50px;
+      width: 100%;
+      max-width: 700px;
+      flex-shrink: 0;
+    }
+
+    nav button {
+      background: #00ff99;
+      border: none;
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #004d33;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0, 255, 153, 0.6);
+      transition: all 0.3s ease;
+      user-select: none;
+      min-width: 130px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+    }
+    nav button::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 100%;
+      transform: translate(-50%, -50%);
+      transition: width 0.4s ease, height 0.4s ease;
+      z-index: 0;
+    }
+    nav button:hover::before {
+      width: 200%;
+      height: 500%;
+    }
+    nav button:hover {
+      color: #003322;
+      box-shadow: 0 6px 20px rgba(0, 255, 153, 0.9);
+      transform: scale(1.08);
+      z-index: 1;
+    }
+    nav button:focus {
+      outline: none;
+      box-shadow: 0 0 10px 2px #00ff99;
+      transform: scale(1.1);
+      z-index: 2;
+    }
+
+    /* Sections */
+    main {
+      flex-grow: 1;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+    }
+    section {
+      max-width: 700px;
+      background: rgba(0,0,0,0.55);
+      border-radius: 15px;
+      padding: 30px 40px;
+      margin: 20px auto;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.85);
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      display: none;
+      position: relative;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+      display: block;
+    }
+
+    /* Section Titles */
+    section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      color: #00ff99;
+      text-align: center;
+      text-shadow:
+        0 0 4px #00ff99,
+        0 0 8px #00ff99;
+    }
+
+    /* Section content text */
+    section p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+      color: #ccc;
+      white-space: pre-line;
+      text-align: center;
+    }
+
+    /* Contact form styles */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .contact-form input, .contact-form textarea {
+      padding: 10px 15px;
+      border-radius: 8px;
+      border: none;
+      font-size: 1rem;
+      resize: vertical;
+      font-family: 'Nunito', sans-serif;
+    }
+    .contact-form button {
+      background: #00ff99;
+      color: #004d33;
+      font-weight: 700;
+      border-radius: 50px;
+      padding: 12px;
+      cursor: pointer;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .contact-form button:hover {
+      background-color: #00cc7a;
+      color: #001a0a;
+    }
+
+    /* Exit button */
+    .exit-button {
+      display: block;
+      margin: 20px auto 0;
+      background: #ff4444;
+      color: #fff;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(255, 68, 68, 0.7);
+      transition: background-color 0.3s ease;
+      max-width: 200px;
+      user-select: none;
+    }
+    .exit-button:hover {
+      background-color: #cc0000;
+    }
+
+    /* Scrollbar styling for container overflow */
+    .container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .container::-webkit-scrollbar-track {
+      background: rgba(0,0,0,0.3);
+      border-radius: 4px;
+    }
+    .container::-webkit-scrollbar-thumb {
+      background: #00ff99;
+      border-radius: 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container {
+        max-width: 90vw;
+        max-height: 95vh;
+        padding: 20px 25px;
+      }
+      .intro-text h1 {
+        font-size: 2.5rem;
+      }
+      .intro-text h2 {
+        font-size: 1.8rem;
+      }
+      section h2 {
+        font-size: 1.8rem;
+      }
+    }
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+      nav button {
+        width: 100%;
+        max-width: 300px;
+      }
+      .intro-text h1 {
+        font-size: 2rem;
+      }
+      .intro-text h2 {
+        font-size: 1.4rem;
+      }
+      section h2 {
+        font-size: 1.6rem;
+      }
+      .exit-button {
+        max-width: 100%;
+        padding: 12px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="container" role="main" aria-live="polite" aria-atomic="true">
+    <header class="intro-text" aria-label="Вступительный текст сайта">
+      <h1>WELCOME!</h1>
+      <h2>SOCIOTROPIA.COM</h2>
+    </header>
+
+    <nav aria-label="Основное меню">
+      <button data-target="about" aria-controls="about" aria-expanded="false">Обо мне</button>
+      <button data-target="bio" aria-controls="bio" aria-expanded="false">Биография</button>
+      <button data-target="order" aria-controls="order" aria-expanded="false">Заказать</button>
+      <button data-target="contact" aria-controls="contact" aria-expanded="false">Связь</button>
+      <button data-target="project" aria-controls="project" aria-expanded="false">Проект</button>
+    </nav>
+
+    <main>
+      <section id="about" tabindex="-1" aria-label="Обо мне" role="region" aria-hidden="true">
+        <h2>Обо мне</h2>
+        <p>Привет! Меня зовут Роман. Добро пожаловать на мой сайт-визитку. Здесь вы можете узнать обо мне и моих проектах.</p>
+        <button class="exit-button" aria-label="Закрыть раздел Обо мне">Выход</button>
+      </section>
+
+      <section id="bio" tabindex="-1" aria-label="Биография" role="region" aria-hidden="true">
+        <h2>Биография</h2>
+        <p>Родился и вырос в Украине. Увлекаюсь программированием, дизайном и новыми технологиями. Имею опыт в создании современных веб-сайтов с анимациями и удобным интерфейсом.</p>
+        <button class="exit-button" aria-label="Закрыть раздел Биография">Выход</button>
+      </section>
+
+      <section id="order" tabindex="-1" aria-label="Заказать" role="region" aria-hidden="true">
+        <h2>Заказать</h2>
+        <p>Если хотите заказать у меня проект или услугу, просто свяжитесь со мной через форму связи ниже, и я обязательно отвечу!</p>
+        <button class="exit-button" aria-label="Закрыть раздел Заказать">Выход</button>
+      </section>
+
+      <section id="contact" tabindex="-1" aria-label="Связь" role="region" aria-hidden="true">
+        <h2>Связь</h2>
+        <form class="contact-form" onsubmit="handleForm(event)" aria-label="Форма связи">
+          <input type="text" name="name" placeholder="Ваше имя" required aria-required="true" />
+          <input type="email" name="email" placeholder="Ваш email" required aria-required="true" />
+          <textarea name="message" rows="5" placeholder="Ваше сообщение" required aria-required="true"></textarea>
+          <button type="submit">Отправить</button>
+          <p id="form-message" role="alert" aria-live="polite" style="margin-top:10px;"></p>
+        </form>
+        <button class="exit-button" aria-label="Закрыть раздел Связь">Выход</button>
+      </section>
+
+      <section id="project" tabindex="-1" aria-label="Проект" role="region" aria-hidden="true">
+        <h2>Проект</h2>
+        <p>Мой самый последний проект - современный веб-сайт-визитка с анимацией. Этот сайт и есть пример моей работы!</p>
+        <button class="exit-button" aria-label="Закрыть раздел Проект">Выход</button>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const buttons = document.querySelectorAll('nav button');
+    const sections = document.querySelectorAll('main section');
+    const exitButtons = document.querySelectorAll('.exit-button');
+    const navButtons = document.querySelectorAll('nav button');
+
+    // Function to hide all sections
+    function hideAllSections() {
+      sections.forEach(section => {
+        section.classList.remove('visible');
+        section.setAttribute('aria-hidden', 'true');
+      });
+      navButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+    }
+
+    // Event listeners for main nav buttons
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const targetId = button.getAttribute('data-target');
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          const isVisible = targetSection.classList.contains('visible');
+          if (!isVisible) {
+            hideAllSections();
+            targetSection.classList.add('visible');
+            targetSection.setAttribute('aria-hidden', 'false');
+            targetSection.focus();
+            button.setAttribute('aria-expanded', 'true');
+          } else {
+            // If already visible, hide it (optional if you want)
+            targetSection.classList.remove('visible');
+            targetSection.setAttribute('aria-hidden', 'true');
+            button.setAttribute('aria-expanded', 'false');
+          }
+        }
+      });
+    });
+
+    // Event listeners for exit buttons
+    exitButtons.forEach(exitBtn => {
+      exitBtn.addEventListener('click', () => {
+        const parentSection = exitBtn.closest('section');
+        if (parentSection) {
+          parentSection.classList.remove('visible');
+          parentSection.setAttribute('aria-hidden', 'true');
+          // Reset all nav buttons expanded to false
+          navButtons.forEach(btn => btn.setAttribute('aria-expanded', 'false'));
+          // Focus back to nav for accessibility
+          document.querySelector('nav').focus();
+        }
+      });
+    });
+
+    // Upon load, hide all sections initially
+    window.addEventListener('load', () => {
+      hideAllSections();
+    });
+
+    // Contact form handling simulation (no server)
+    function handleForm(event) {
+      event.preventDefault();
+      const form = event.target;
+      const messageEl = document.getElementById('form-message');
+      messageEl.textContent = "Спасибо! Ваше сообщение отправлено.";
+      messageEl.style.color = "#00ff99";
+      form.reset();
+    }
+  </script>
+
+</body>
+</html>
+
